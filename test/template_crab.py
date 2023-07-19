@@ -3,7 +3,7 @@ from CRABClient.UserUtilities import config
 config = config()
 
 config.General.requestName = '_requestName_'
-config.General.workArea = '_workArea_'
+config.General.workArea = '/uscms/home/josephn/nobackup/CMSSW_10_6_29/src/PhysicsTools/PFNano/test'
 config.General.transferLogs = True 
 
 config.JobType.pluginName = 'Analysis'

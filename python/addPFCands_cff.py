@@ -1,7 +1,7 @@
 import FWCore.ParameterSet.Config as cms
 from  PhysicsTools.NanoAOD.common_cff import *
 
-def addPFCands(process, runOnMC=False, allPF = False, onlyAK4=False, onlyAK8=False):
+def addPFCands(process, runOnMC=False, allPF = False, onlyAK4=False, onlyAK8=False, onlyPF=False):
     process.customizedPFCandsTask = cms.Task( )
     process.schedule.associate(process.customizedPFCandsTask)
 
@@ -12,9 +12,9 @@ def addPFCands(process, runOnMC=False, allPF = False, onlyAK4=False, onlyAK8=Fal
     process.finalJetsAK4Constituents = cms.EDProducer("PatJetConstituentPtrSelector",
                                             src = cms.InputTag("finalJets"),
                                             cut = cms.string("")
-                                            )
-    if allPF:
-        candInput = cms.InputTag("packedPFCandidates")
+                                             )
+    if onlyPF or allPF:
+	candInput = cms.InputTag("packedPFCandidates")
     elif onlyAK4:
         candList = cms.VInputTag(cms.InputTag("finalJetsAK4Constituents", "constituents"))
         process.customizedPFCandsTask.add(process.finalJetsAK4Constituents)
@@ -71,12 +71,15 @@ def addPFCands(process, runOnMC=False, allPF = False, onlyAK4=False, onlyAK8=Fal
                                                         nameSV = cms.string("JetSVs"),
                                                         idx_nameSV = cms.string("sVIdx"),
                                                         )
-    if not allPF:
+    if not allPF and not onlyPF:
         process.customizedPFCandsTask.add(process.finalJetsConstituents)
     process.customizedPFCandsTask.add(process.customConstituentsExtTable)
-    process.customizedPFCandsTask.add(process.customAK8ConstituentsTable)
-    process.customizedPFCandsTask.add(process.customAK4ConstituentsTable)
     
+    if not onlyPF:
+    	process.customizedPFCandsTask.add(process.customAK8ConstituentsTable)
+    	process.customizedPFCandsTask.add(process.customAK4ConstituentsTable)
+ 	
+ 
     if runOnMC:
 
         process.genJetsAK8Constituents = cms.EDProducer("GenJetPackedConstituentPtrSelector",
@@ -89,7 +92,7 @@ def addPFCands(process, runOnMC=False, allPF = False, onlyAK4=False, onlyAK8=Fal
                                                     src = cms.InputTag("slimmedGenJets"),
                                                     cut = cms.string("pt > 20")
                                                     )
-        if allPF:
+        if allPF or onlyPF:
             genCandInput = cms.InputTag("packedGenParticles")
         elif onlyAK4:
             genCandList = cms.VInputTag(cms.InputTag("genJetsAK4Constituents", "constituents"))
@@ -129,12 +132,15 @@ def addPFCands(process, runOnMC=False, allPF = False, onlyAK4=False, onlyAK8=Fal
                                                          idx_name = cms.string("pFCandsIdx"),
                                                          idx_nameSV = cms.string("sVIdx"),
                                                          readBtag = cms.bool(False))
-        process.customizedPFCandsTask.add(process.genJetsAK4Constituents) #Note: For gen need to add jets to the process to keep pt cuts.
-        process.customizedPFCandsTask.add(process.genJetsAK8Constituents)
-        if not allPF:
+        
+	if not onlyPF:
+	    process.customizedPFCandsTask.add(process.genJetsAK4Constituents) #Note: For gen need to add jets to the process to keep pt cuts.
+            process.customizedPFCandsTask.add(process.genJetsAK8Constituents)
+        if not allPF and not onlyPF:
             process.customizedPFCandsTask.add(process.genJetsConstituents)
         process.customizedPFCandsTask.add(process.genJetsParticleTable)
-        process.customizedPFCandsTask.add(process.genAK8ConstituentsTable)
-        process.customizedPFCandsTask.add(process.genAK4ConstituentsTable)
+        if not onlyPF:
+	    process.customizedPFCandsTask.add(process.genAK8ConstituentsTable)
+            process.customizedPFCandsTask.add(process.genAK4ConstituentsTable)
         
     return process
