@@ -2,14 +2,14 @@
 
 ## Edits to Files
 
-The main edits that are needed to be made are the card_example.yml file. The file utilizes the information given in the file to create a crab job. The important points to edit are the datasets you are working with as well as the config file needed.
+The main edits that are needed to be made are the card_example.yml file. The file utilizes the information given in the file to create a crab job. The necessary edits to the card_example.yml file are as follows:
 
-storageSite = T3_US_FNALLPC<br>
-directory = /store/user/your_username/WHATEVER<br>
-CMS group: ex. uscms group (if in the US)<br>
-config: python file created by running PFNanoDrivers.sh<br>
-data: /JetHT/Run2016H-UL2016_MiniAODv2-v2/MINIOAD -> should correspond to what is in "datasets." It will differ based on what dataset you have been working on.<br>
-If lumimask is desired, you will need to find and paste the proper URL. An example url would look like this:
+1. storageSite = T3_US_FNALLPC
+2. directory = /store/user/your_username/WHATEVER
+3. CMS group: ex. uscms group (if in the US)
+4. config: python file created by running PFNanoDrivers.sh
+5. data: /JetHT/Run2016H-UL2016_MiniAODv2-v2/MINIOAD -> should correspond to what is in "datasets." It will differ based on what dataset you have been working on.
+6. If lumimask is desired, you will need to find and paste the proper URL. An example url would look like this:
 ```
 'https://cms-service-dqmdc.web.cern.ch/CAF/certification/Collisions16/13TeV/Cert_271036-275783_13TeV_PromptReco_Collisions16_JSON.txt'
 ```
