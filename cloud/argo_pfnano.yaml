@@ -122,7 +122,7 @@ spec:
         #cernopendata-client get-file-locations --recid "{{inputs.parameters.recid}}" --protocol xrootd > /mnt/vol/files_{{inputs.parameters.recid}}.txt;
         #cernopendata-client get-metadata --recid "{{inputs.parameters.recid}}"  --output-value type.secondary > /tmp/type.txt 
         #cernopendata-client get-metadata --recid "{{inputs.parameters.recid}}"  --output-value distribution.number_files
-        curl -s -o /mnt/vol/files_{{inputs.parameters.recid}}.txt https://raw.githubusercontent.com/cms-opendata-analyses/PFNanoProducerTool/master/cloud/filelist-temp.py
+        curl -s -o /mnt/vol/files_{{inputs.parameters.recid}}.txt https://raw.githubusercontent.com/cms-opendata-analyses/PFNanoProducerTool/master/cloud/filelist-temp.txt
         echo Collision > /tmp/type.txt
         echo 1236
       volumeMounts:
