@@ -190,6 +190,7 @@ spec:
         
         sudo chown $USER /mnt/vol
         source /opt/cms/entrypoint.sh
+        eval `scramv1 runtime -sh`
         git clone https://github.com/cms-opendata-analyses/PFNanoProducerTool.git PhysicsTools/PFNano
         cd PhysicsTools/PFNano
         scram b
@@ -206,7 +207,7 @@ spec:
         echo firstFile $firstFile
         echo lastFile $lastFile
 
-        cmsRun python/pfnano_data_2016UL_OpenData_cloud.py $firstFile $lastFile '"/mnt/vol/files_{{inputs.parameters.recid}}.txt"' $eventsInJob
+        cmsRun pfnano_data_2016UL_OpenData_cloud.py $firstFile $lastFile '"/mnt/vol/files_{{inputs.parameters.recid}}.txt"' $eventsInJob
         
         mv nano_data2016.root /mnt/vol/scatter/pfnanooutput$it.root
 
@@ -240,12 +241,10 @@ spec:
       image: rootproject/root:latest
       command: [bash]
       source: | 
-        
-        cp /mnt/vol/pfnanooutput.root .
-        curl -LO https://raw.githubusercontent.com/cms-opendata-analyses/PhysObjectExtractorTool/odws2023/PhysObjectExtractor/cloud/analysis.C
+        ln -sf /mnt/vol/pfnanooutput.root pfnanooutput.root
+        curl -LO https://raw.githubusercontent.com/cms-opendata-analyses/PFNanoProducerTool/master/cloud/pfnano_analysis.C 
 
-        root -l -b -q analysis.C
-        mv analysis_output.root /mnt/vol/analysis_output.root
+        root -l -b -q pfnano_analysis.C
         mv *.png /mnt/vol
         
       volumeMounts:
