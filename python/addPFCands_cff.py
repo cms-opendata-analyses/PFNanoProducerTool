@@ -35,7 +35,7 @@ def addPFCands(process, runOnMC=False, allPF = False, onlyAK4=False, onlyAK8=Fal
                                                         src = candInput,
                                                         cut = cms.string(""), #we should not filter after pruning
                                                         name = cms.string("PFCands"),
-                                                        doc = cms.string("interesting particles from AK4 and AK8 jets"),
+                                                        doc = cms.string("particle candidates from the Particle Flow algorithm"),
                                                         singleton = cms.bool(False), # the number of entries is variable
                                                         extension = cms.bool(False), # this is the extension table for the AK8 constituents
                                                         variables = cms.PSet(CandVars,
