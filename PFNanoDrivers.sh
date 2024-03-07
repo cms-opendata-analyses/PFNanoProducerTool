@@ -48,15 +48,15 @@ eval set -- "$PARAMS"
 cmsDriver.py pfnano_mc_2016UL_OpenData --mc --eventcontent NANOEDMAODSIM --datatier NANOAODSIM --step NANO \
 --conditions 106X_mcRun2_asymptotic_v17 --era Run2_2016,run2_nanoAOD_106Xv2 \
 --customise_commands="process.add_(cms.Service('InitRootHandlers', EnableIMT = cms.untracked.bool(False)))" --nThreads 4 \
---fileout file:nano_mc2016post.root  --filein "root://cmseos.fnal.gov//store/user/jmanagan/QCDtestfile.root" -n 100 \ 
---customise PhysicsTools/PFNano/pfnano_cff.PFnano_customizeMC_onlyaddPFcands$NOINPUTS  $NO_EXEC $PARALLEL
+--fileout file:nano_mc2016post.root  --filein "root://eospublic.cern.ch//eos/opendata/cms/mc/RunIISummer20UL16MiniAODv2/QCD_HT300to500_TuneCP5_PSWeights_13TeV-madgraph-pythia8/MINIAODSIM/106X_mcRun2_asymptotic_v17-v1/260000/FD26F360-1D78-9B4B-8BD9-CBCC7DFECB9D.root" \
+-n 100 --customise PhysicsTools/PFNano/pfnano_cff.PFnano_customizeMC_onlyaddPFcands$NOINPUTS  $NO_EXEC $PARALLEL
 
 # Data 2016
 cmsDriver.py pfnano_data_2016UL_OpenData --data --eventcontent NANOAODSIM --datatier NANOAODSIM --step NANO \
 --conditions 106X_dataRun2_v37   --era Run2_2016,run2_nanoAOD_106Xv2 \
 --customise_commands="process.add_(cms.Service('InitRootHandlers', EnableIMT = cms.untracked.bool(False)))" --nThreads 4 \
--n 100 --filein /store/data/Run2016H/JetHT/MINIAOD/UL2016_MiniAODv2-v2/130000/676E37D2-044C-D346-92D9-A127A55FD279.root --fileout file:nano_data2016.root \
---customise PhysicsTools/PFNano/pfnano_cff.PFnano_customizeData_onlyaddPFcands$NOINPUTS  $NO_EXEC $PARALLEL
+-n 100 --filein "root://eospublic.cern.ch//eos/opendata/cms/Run2016G/JetHT/MINIAOD/UL2016_MiniAODv2-v2/70000/F8C20C1A-8457-4745-B3F9-8318AA8AB253.root" \
+--fileout file:nano_data2016.root --customise PhysicsTools/PFNano/pfnano_cff.PFnano_customizeData_onlyaddPFcands$NOINPUTS  $NO_EXEC $PARALLEL
 
 ### Drivers to add general PFCandidates AND specific jet candidates to NanoAOD
 
@@ -64,12 +64,12 @@ cmsDriver.py pfnano_data_2016UL_OpenData --data --eventcontent NANOAODSIM --data
 # cmsDriver.py pfnano_jetcands_mc_2016UL_OpenData --mc --eventcontent NANOEDMAODSIM --datatier NANOAODSIM --step NANO \
 # --conditions 106X_mcRun2_asymptotic_v17 --era Run2_2016,run2_nanoAOD_106Xv2 \
 # --customise_commands="process.add_(cms.Service('InitRootHandlers', EnableIMT = cms.untracked.bool(False)))" --nThreads 4 \
-# --fileout file:nano_mc2016post.root  --filein "root://cmseos.fnal.gov//store/user/jmanagan/QCDtestfile.root" -n 100 \ 
-# --customise PhysicsTools/PFNano/pfnano_cff.PFnano_customizeMC_allPF$NOINPUTS  $NO_EXEC $PARALLEL
+# --fileout file:nano_mc2016post.root  --filein "root://eospublic.cern.ch//eos/opendata/cms/mc/RunIISummer20UL16MiniAODv2/QCD_HT300to500_TuneCP5_PSWeights_13TeV-madgraph-pythia8/MINIAODSIM/106X_mcRun2_asymptotic_v17-v1/260000/FD26F360-1D78-9B4B-8BD9-CBCC7DFECB9D.root" \
+# -n 100 --customise PhysicsTools/PFNano/pfnano_cff.PFnano_customizeMC_allPF$NOINPUTS  $NO_EXEC $PARALLEL
 
 # Data 2016
 # cmsDriver.py pfnano_jetcands_data_2016UL_OpenData --data --eventcontent NANOAODSIM --datatier NANOAODSIM --step NANO \
 # --conditions 106X_dataRun2_v37   --era Run2_2016,run2_nanoAOD_106Xv2 \
 # --customise_commands="process.add_(cms.Service('InitRootHandlers', EnableIMT = cms.untracked.bool(False)))" --nThreads 4 \
-# -n 100 --filein /store/data/Run2016H/JetHT/MINIAOD/UL2016_MiniAODv2-v2/130000/676E37D2-044C-D346-92D9-A127A55FD279.root --fileout file:nano_data2016.root \
-# --customise PhysicsTools/PFNano/pfnano_cff.PFnano_customizeData_allPF$NOINPUTS  $NO_EXEC $PARALLEL
+# -n 100 --filein "root://eospublic.cern.ch//eos/opendata/cms/Run2016G/JetHT/MINIAOD/UL2016_MiniAODv2-v2/70000/F8C20C1A-8457-4745-B3F9-8318AA8AB253.root \
+# --fileout file:nano_data2016.root --customise PhysicsTools/PFNano/pfnano_cff.PFnano_customizeData_allPF$NOINPUTS  $NO_EXEC $PARALLEL
