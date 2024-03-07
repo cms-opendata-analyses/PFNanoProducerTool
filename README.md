@@ -1,6 +1,6 @@
 # PFNano
 
-This is a [NanoAOD](https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookNanoAOD) framework that allows users to add Particle Flow candidates to NanoAOD files, by preprocessing MiniAOD files. 
+This is a [NanoAOD](https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookNanoAOD) framework that allows users to add Particle Flow candidates to NanoAOD files, by processing MiniAOD files. 
 
 The current full content of these NanoAOD files can be seen [here](https://htmlpreview.github.io/?https://github.com/josephmoop/PFNano/blob/c6ea74b6f5ac6646c5ab86dac0b1a6e0fb4edeae/test/nanoAOD_2016MC.html).
 In this version, PFcandidates can be saved in several collections: general PF candidates only, AK4 jet candidates only, AK8 jet candidate only, or all the PF candidates. 
@@ -9,7 +9,7 @@ This format can be used with [fastjet](http://fastjet.fr) directly.
 ## Recipe
 
 This repository is intended to be used in the CMSSW_10_6_30 docker container for Open Data.
-A getting-started tutorial for using this container can be found FIXME.
+A getting-started tutorial for using this container can be found [here](opendata.cern.ch/docs/cms-guide-docker).
 
 To install PFNanoProducerTool, launch the CMSSW_10_6_30 container, and make sure you are located in CMSSW_10_6_30/src. 
 
