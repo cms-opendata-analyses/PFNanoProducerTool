@@ -50,6 +50,14 @@ def addPFCands(process, runOnMC=False, allPF = False, onlyAK4=False, onlyAK8=Fal
                                                             pvAssocQuality = Var("pvAssociationQuality()", int, doc="primary vertex association quality"),
                                                             lostInnerHits = Var("lostInnerHits()", int, doc="lost inner hits"),
                                                             trkQuality = Var("?hasTrackDetails()?pseudoTrack().qualityMask():0", int, doc="track quality mask"),
+							    e = Var("energy()", float, doc="energy"),
+                                                            ptTrk = Var("?hasTrackDetails()?ptTrk():-1", float, doc="pT from the associated track"),
+                                                            etaAtVtx = Var("?hasTrackDetails()?etaAtVtx():-1", float, doc="eta at vertex from associated track"),
+                                                            phiAtVtx = Var("?hasTrackDetails()?phiAtVtx():-1", float, doc="phi at vertex from associated track"),
+                                                            caloFraction = Var("caloFraction()", float, doc="fraction of candidate energy from calorimeters"),
+                                                            hcalFraction = Var("hcalFraction()", float, doc="fraction of candidate energy from HCAL"),
+							    isIsoCH = Var("isIsolatedChargedHadron()", int, doc="boolean flag identifying isolated charged hadrons"),
+
                                                          )
                                     )
     process.customAK8ConstituentsTable = cms.EDProducer("PatJetConstituentTableProducer",
