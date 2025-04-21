@@ -9,7 +9,7 @@ This format can be used with [fastjet](http://fastjet.fr) directly.
 ## Recipe
 
 This repository is intended to be used in the CMSSW_10_6_30 docker container for Open Data.
-A getting-started tutorial for using this container can be found [here](opendata.cern.ch/docs/cms-guide-docker).
+A getting-started tutorial for using this container can be found [here](https://opendata.cern.ch/docs/cms-guide-docker).
 
 To install PFNanoProducerTool, launch the CMSSW_10_6_30 container, and make sure you are located in CMSSW_10_6_30/src. 
 
